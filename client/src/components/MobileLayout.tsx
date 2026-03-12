@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import logoImage from "@assets/logo_ai.png";
 import BottomNavigation from "./BottomNavigation";
 import ScrollProgress from "./ScrollProgress";
 
@@ -23,7 +24,7 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
         }}
       >
         <img
-          src="/logo.png"
+          src={logoImage}
           alt="SAYD.X Logo"
           className="w-28 h-28 sm:w-36 sm:h-36 md:w-48 md:h-48 object-contain drop-shadow-[0_0_12px_rgba(34,211,238,0.5)]"
         />
