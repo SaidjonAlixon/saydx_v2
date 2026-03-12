@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useTeam } from "@/hooks/use-team";
 import { motion } from "framer-motion";
 import { useParams } from "wouter";
 import {
@@ -208,9 +208,7 @@ function getResumeData(role: string): RoleEntry {
 
 export default function ResumePage() {
   const params = useParams<{ id: string }>();
-  const { data: teamRes } = useQuery<{ success: boolean; data: TeamMember[] }>({
-    queryKey: ["/api/team"],
-  });
+  const { data: teamRes } = useTeam();
 
   const member = teamRes?.data?.find(m => m.id === params.id);
   const resume = member ? getResumeData(member.role) : null;

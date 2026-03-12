@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { TeamMember } from "@shared/schema";
 import { StaffListCard } from "./StaffListCard";
 import { EmployeeDetailPanel } from "./EmployeeDetailPanel";
 import { motion } from "framer-motion";
+import { useTeam } from "@/hooks/use-team";
 
 export default function TeamSection() {
-  const { data: teamRes, isLoading } = useQuery<{ success: boolean; data: TeamMember[] }>({
-    queryKey: ["/api/team"],
-  });
+  const { data: teamRes, isLoading } = useTeam();
 
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const teamMembers = teamRes?.data || [];

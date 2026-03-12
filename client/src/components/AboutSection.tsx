@@ -1,13 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useTeam } from "@/hooks/use-team";
 import { TeamMember } from "@shared/schema";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { UserCheck } from "lucide-react";
 
 export default function AboutSection() {
-  const { data: teamRes } = useQuery<{ success: boolean; data: TeamMember[] }>({
-    queryKey: ["/api/team"],
-  });
+  const { data: teamRes } = useTeam();
 
   const teamMembers = teamRes?.data || [];
   const mainMember = teamMembers.find((m) => m.isMain === "true");
